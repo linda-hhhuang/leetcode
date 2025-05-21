@@ -4,13 +4,7 @@
  * [707] 设计链表
  */
 
-class ListNode {
-	val?: number;
-	next: ListNode | undefined;
-	constructor(val?: number) {
-		this.val = val;
-	}
-}
+
 // @lc code=start
 class MyLinkedList {
 	nodeList: ListNode | undefined;
