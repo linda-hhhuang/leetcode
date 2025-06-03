@@ -17,7 +17,7 @@ function isAnagram(s: string, t: string): boolean {
 		if (!item) return false;
 		map.set(c, item - 1);
 	}
-	console.log("map", map.entries());
+	// console.log("map", map.entries());
 	return Array.from(map.values()).find((i) => i !== 0) ? false : true;
 }
 // @lc code=end
