@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeetCode 做题大盘</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f6f8fa; color: #24292f; padding: 32px 20px; }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  .sub { color: #6b7280; font-size: 13px; margin-bottom: 24px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; text-align: center; }
+  .card .num { font-size: 30px; font-weight: 700; }
+  .card .lbl { font-size: 12px; color: #6b7280; margin-top: 4px; }
+  .c-total .num { color: #6366f1; }
+  .c-hard .num { color: #ef4743; }
+  .c-streak .num { color: #ff8c00; }
+  .c-rate .num { color: #00af9b; }
+  .panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 22px; }
+  .panel h2 { font-size: 15px; margin-bottom: 16px; color: #374151; }
+  .heatmap { display: flex; gap: 3px; overflow-x: auto; padding-bottom: 4px; }
+  .hm-col { display: flex; flex-direction: column; gap: 3px; }
+  .hm-cell { width: 13px; height: 13px; border-radius: 2px; }
+  .legend { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #6b7280; margin-top: 12px; }
+  .legend .hm-cell { width: 11px; height: 11px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; font-size: 13px; }
+  .bar-label { width: 160px; text-align: right; color: #4b5563; flex-shrink: 0; }
+  .bar-track { flex: 1; background: #f0f0f3; border-radius: 6px; height: 18px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; transition: width .3s; }
+  .bar-val { width: 28px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 9px 8px; border-bottom: 1px solid #f0f0f3; text-align: left; }
+  th { color: #6b7280; font-weight: 600; font-size: 12px; }
+  td a { color: #2563eb; text-decoration: none; }
+  td a:hover { text-decoration: underline; }
+  .diff { font-weight: 600; }
+  .quote { background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #fff; border-radius: 12px; padding: 18px 22px; margin-bottom: 22px; font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧗 LeetCode 做题大盘</h1>
+  <div class="sub">更新于 2026/6/30 15:47:33 · 首刷 2026-05-13 → 最近 2026-06-30</div>
+
+  <div class="quote">
+    已经坚持了 <b>10</b> 个做题日，啃下 <b>3</b> 道 Hard。<br>
+    每天一道，积少成多 —— 继续保持节奏！💪
+  </div>
+
+  <div class="cards">
+    <div class="card c-total"><div class="num">11</div><div class="lbl">总完成题数</div></div>
+    <div class="card c-hard"><div class="num">3</div><div class="lbl">Hard 攻克</div></div>
+    <div class="card c-streak"><div class="num">10</div><div class="lbl">活跃做题日</div></div>
+    <div class="card c-rate"><div class="num">73%</div><div class="lbl">一次通过率</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>📅 做题热力图（最近 18 周）</h2>
+    <div class="heatmap"><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-02-23: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-02-24: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-02-25: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-02-26: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-02-27: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-02-28: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-01: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-03-02: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-03: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-04: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-05: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-06: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-07: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-08: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-03-09: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-10: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-11: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-12: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-13: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-14: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-15: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-03-16: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-17: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-18: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-19: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-20: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-21: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-22: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-03-23: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-24: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-25: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-26: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-27: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-28: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-29: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-03-30: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-03-31: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-01: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-02: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-03: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-04: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-05: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-04-06: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-07: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-08: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-09: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-10: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-11: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-12: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-04-13: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-14: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-15: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-16: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-17: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-18: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-19: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-04-20: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-21: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-22: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-23: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-24: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-25: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-26: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-04-27: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-28: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-29: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-04-30: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-01: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-02: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-03: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-05-04: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-05: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-06: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-07: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-08: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-09: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-10: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-05-11: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-12: 0 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-13: 1 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-14: 1 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-15: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-16: 0 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-17: 1 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-05-18: 0 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-19: 1 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-20: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-21: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-22: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-23: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-24: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-05-25: 0 题"></div><div class="hm-cell" style="background:#40c463" title="2026-05-26: 2 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-27: 0 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-28: 1 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-05-29: 1 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-30: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-05-31: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-06-01: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-02: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-03: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-04: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-05: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-06: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-07: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-06-08: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-09: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-10: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-11: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-12: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-13: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-14: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#ebedf0" title="2026-06-15: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-16: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-17: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-18: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-19: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-20: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-21: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#9be9a8" title="2026-06-22: 1 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-23: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-24: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-25: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-26: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-27: 0 题"></div><div class="hm-cell" style="background:#ebedf0" title="2026-06-28: 0 题"></div></div><div class="hm-col"><div class="hm-cell" style="background:#9be9a8" title="2026-06-29: 1 题"></div><div class="hm-cell" style="background:#9be9a8" title="2026-06-30: 1 题"></div></div></div>
+    <div class="legend">少 <div class="hm-cell" style="background:#ebedf0"></div><div class="hm-cell" style="background:#9be9a8"></div><div class="hm-cell" style="background:#40c463"></div><div class="hm-cell" style="background:#30a14e"></div><div class="hm-cell" style="background:#216e39"></div> 多</div>
+  </div>
+
+  <div class="panel">
+    <h2>🎯 难度分布</h2>
+    <div class="bar-row"><span class="bar-label">Easy</span><div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#00af9b"></div></div><span class="bar-val">2</span></div>
+    <div class="bar-row"><span class="bar-label">Medium</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#ffb800"></div></div><span class="bar-val">6</span></div>
+    <div class="bar-row"><span class="bar-label">Hard</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#ef4743"></div></div><span class="bar-val">3</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>🗂 算法分类分布</h2>
+    <div class="bar-row"><span class="bar-label">dynamic-programming</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">trie</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">simulation</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">hash-counting</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">sliding-window</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#6366f1"></div></div><span class="bar-val">1</span></div><div class="bar-row"><span class="bar-label">bfs-dfs</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#6366f1"></div></div><span class="bar-val">1</span></div><div class="bar-row"><span class="bar-label">greedy</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#6366f1"></div></div><span class="bar-val">1</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>🕒 最近做题流水</h2>
+    <table>
+      <thead><tr><th>日期</th><th>题目</th><th>难度</th><th>分类</th><th style="text-align:center">一次过</th></tr></thead>
+      <tbody><tr>
+    <td>2026-06-30</td>
+    <td><a href="https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/" target="_blank">#1358 包含所有三种字符的子字符串数目</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>sliding-window</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-06-29</td>
+    <td><a href="https://leetcode.cn/problems/number-of-zigzag-arrays-i/" target="_blank">#3699 锯齿形数组的总数 I</a></td>
+    <td><span class="diff" style="color:#ef4743">Hard</span></td>
+    <td>dynamic-programming</td>
+    <td style="text-align:center"><span class="ng">🔁</span></td>
+  </tr><tr>
+    <td>2026-06-22</td>
+    <td><a href="https://leetcode.cn/problems/longest-common-suffix-queries/" target="_blank">#3093 最长公共后缀查询</a></td>
+    <td><span class="diff" style="color:#ef4743">Hard</span></td>
+    <td>trie</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-29</td>
+    <td><a href="https://leetcode.cn/problems/minimum-element-after-replacement-with-digit-sum/" target="_blank">#3300 替换为数位和以后的最小元素</a></td>
+    <td><span class="diff" style="color:#00af9b">Easy</span></td>
+    <td>simulation</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-28</td>
+    <td><a href="https://leetcode.cn/problems/count-the-number-of-special-characters-ii/" target="_blank">#3121 统计特殊字母的数量 II</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>hash-counting</td>
+    <td style="text-align:center"><span class="ng">🔁</span></td>
+  </tr><tr>
+    <td>2026-05-26</td>
+    <td><a href="https://leetcode.cn/problems/count-the-number-of-special-characters-i/" target="_blank">#3120 统计特殊字母的数量 I</a></td>
+    <td><span class="diff" style="color:#00af9b">Easy</span></td>
+    <td>hash-counting</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-26</td>
+    <td><a href="https://leetcode.cn/problems/find-the-length-of-the-longest-common-prefix/" target="_blank">#3043 最长公共前缀的长度</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>trie</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-19</td>
+    <td><a href="https://leetcode.cn/problems/jump-game-iii/" target="_blank">#1306 跳跃游戏 III</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>bfs-dfs</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-17</td>
+    <td><a href="https://leetcode.cn/problems/maximum-path-score-in-a-grid/" target="_blank">#3742 网格中得分最大的路径</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>dynamic-programming</td>
+    <td style="text-align:center"><span class="ng">🔁</span></td>
+  </tr><tr>
+    <td>2026-05-14</td>
+    <td><a href="https://leetcode.cn/problems/rotating-the-box/" target="_blank">#1861 旋转盒子</a></td>
+    <td><span class="diff" style="color:#ffb800">Medium</span></td>
+    <td>simulation</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr><tr>
+    <td>2026-05-13</td>
+    <td><a href="https://leetcode.cn/problems/minimum-initial-energy-to-finish-tasks/" target="_blank">#1665 完成所有任务的最少初始能量</a></td>
+    <td><span class="diff" style="color:#ef4743">Hard</span></td>
+    <td>greedy</td>
+    <td style="text-align:center"><span class="ok">✅</span></td>
+  </tr></tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
