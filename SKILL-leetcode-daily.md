@@ -214,6 +214,44 @@ leetcode/
 
 ---
 
+## 6.5 Git 仓库同步（leetcode-journey）
+
+把刷题数据同步到 git 仓库，按算法分类管理 + 大盘可视化。
+
+### 仓库结构
+
+```
+leetcode-journey/
+├── problems/<算法分类>/<题号>-<slug>.ts   # 代码（注释头：思路/是否一次过/复杂度）
+├── solutions/<题号>.md                    # 详细题解
+├── pitfalls.md                            # 思路缺陷复盘
+├── progress.json                          # 单一数据源（含 category/first_try/note 字段）
+├── dashboard.html                         # 大盘可视化（统计卡片+热力图+难度/分类分布）
+├── README.md                              # GitHub 首页（脚本生成）
+└── scripts/
+    ├── generate-code-files.js   # progress.json + solutions → problems/ 代码文件
+    ├── generate-dashboard.js    # → dashboard.html
+    ├── generate-readme.js       # → README.md
+    └── build.js                 # 一键全部生成
+```
+
+### progress.json 扩展字段（同步用）
+
+每个 completed 项额外带：
+- `category`: 算法分类（trie / dynamic-programming / greedy / simulation / bfs-dfs / hash-counting / sliding-window …）
+- `first_try`: 是否一次 AC（true/false）
+- `note`: 第一思路 / 卡壳原因（写进代码注释头）
+
+### 工作流
+
+AC 一题后：① 更新 progress.json（带 category/first_try/note）→ ② 写 solutions/<id>.md → ③ `node scripts/build.js` 重新生成代码文件+dashboard+README → ④ git commit & push。
+
+### 远程
+
+GitHub 仓库。首次：`git remote add origin <url>` 后 `git push -u origin main`。
+
+---
+
 ## 7. 自动化集成（可选）
 
 ### 7.1 定时推题（WorkBuddy Automation）
