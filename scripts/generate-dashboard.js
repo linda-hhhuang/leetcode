@@ -16,13 +16,20 @@ const byDiff = { Easy: 0, Medium: 0, Hard: 0 };
 const byCat = {};
 let firstTryCount = 0;
 const solvedDates = {}; // date -> count
+// tracked = 有完成日期的每日一题（非 legacy）；legacy 历史题只计入总数/难度/分类
+const tracked = done.filter(q => q.solved);
+let trackedFirstTry = 0;
+const legacyCount = done.length - tracked.length;
 for (const q of done) {
   byDiff[q.difficulty] = (byDiff[q.difficulty] || 0) + 1;
   byCat[q.category] = (byCat[q.category] || 0) + 1;
-  if (q.first_try) firstTryCount++;
+}
+for (const q of tracked) {
+  if (q.first_try) { firstTryCount++; trackedFirstTry++; }
   solvedDates[q.solved] = (solvedDates[q.solved] || 0) + 1;
 }
-const firstTryRate = total ? Math.round((firstTryCount / total) * 100) : 0;
+// 一次过率只在有记录的 tracked 题里算
+const firstTryRate = tracked.length ? Math.round((trackedFirstTry / tracked.length) * 100) : 0;
 
 // 连续天数 & 活跃天数
 const dateList = Object.keys(solvedDates).sort();
@@ -85,7 +92,7 @@ for (const [cat, val] of catEntries) {
 }
 
 // ---- 最近做题流水 ----
-const recent = [...done].sort((a,b)=>b.solved.localeCompare(a.solved)).slice(0, 12);
+const recent = [...tracked].sort((a,b)=>b.solved.localeCompare(a.solved)).slice(0, 12);
 let recentHTML = '';
 for (const q of recent) {
   const dc = { Easy:'#00af9b', Medium:'#ffb800', Hard:'#ef4743' }[q.difficulty];
@@ -148,14 +155,14 @@ const html = `<!DOCTYPE html>
   <div class="sub">更新于 ${updatedAt} · 首刷 ${firstDay} → 最近 ${lastDay}</div>
 
   <div class="quote">
-    已经坚持了 <b>${activeDays}</b> 个做题日，啃下 <b>${byDiff.Hard}</b> 道 Hard。<br>
-    每天一道，积少成多 —— 继续保持节奏！💪
+    累计完成 <b>${total}</b> 题（含 ${legacyCount} 道早期手刷），其中 <b>${byDiff.Hard}</b> 道 Hard。<br>
+    每日一题已坚持 <b>${activeDays}</b> 个做题日 —— 继续保持节奏！💪
   </div>
 
   <div class="cards">
     <div class="card c-total"><div class="num">${total}</div><div class="lbl">总完成题数</div></div>
     <div class="card c-hard"><div class="num">${byDiff.Hard}</div><div class="lbl">Hard 攻克</div></div>
-    <div class="card c-streak"><div class="num">${activeDays}</div><div class="lbl">活跃做题日</div></div>
+    <div class="card c-streak"><div class="num">${activeDays}</div><div class="lbl">每日一题活跃日</div></div>
     <div class="card c-rate"><div class="num">${firstTryRate}%</div><div class="lbl">一次通过率</div></div>
   </div>
 

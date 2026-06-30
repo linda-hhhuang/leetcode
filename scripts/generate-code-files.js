@@ -21,6 +21,8 @@ function extractCode(solutionFile) {
 
 let generated = 0;
 for (const q of progress.completed) {
+  // legacy 历史题的代码文件已手工就位，无 solution_file，跳过不覆盖
+  if (q.source === 'legacy' || !q.solution_file) continue;
   const code = extractCode(q.solution_file);
   if (!code) { console.warn(`⚠️  无代码: #${q.id}`); continue; }
 

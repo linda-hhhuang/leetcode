@@ -14,13 +14,18 @@ const byDiff = { Easy: 0, Medium: 0, Hard: 0 };
 const byCat = {};
 let firstTry = 0;
 const dates = new Set();
+const tracked = done.filter(q => q.solved);
+let trackedFirstTry = 0;
+const legacyCount = done.length - tracked.length;
 for (const q of done) {
   byDiff[q.difficulty]++;
   byCat[q.category] = (byCat[q.category] || 0) + 1;
-  if (q.first_try) firstTry++;
+}
+for (const q of tracked) {
+  if (q.first_try) trackedFirstTry++;
   dates.add(q.solved);
 }
-const rate = total ? Math.round(firstTry / total * 100) : 0;
+const rate = tracked.length ? Math.round(trackedFirstTry / tracked.length * 100) : 0;
 
 const diffBadge = (l, n, c) => `![${l}](https://img.shields.io/badge/${l}-${n}-${c})`;
 
@@ -31,9 +36,10 @@ for (const [cat, n] of cats) {
   const list = done.filter(q=>q.category===cat).sort((a,b)=>a.id-b.id);
   catSection += '| 题号 | 标题 | 难度 | 一次过 | 解法 |\n|---|---|---|:---:|---|\n';
   for (const q of list) {
-    const tryMark = q.first_try ? '✅' : '🔁';
+    const tryMark = q.source === 'legacy' ? '—' : (q.first_try ? '✅' : '🔁');
     const rel = `problems/${q.category}/${q.id}-${q.slug}.ts`;
-    catSection += `| [#${q.id}](https://leetcode.cn/problems/${q.slug}/) | [${q.title}](${rel}) | ${q.difficulty} | ${tryMark} | ${q.approach.slice(0,40)}${q.approach.length>40?'…':''} |\n`;
+    const appr = (q.approach || '').slice(0, 40) + ((q.approach || '').length > 40 ? '…' : '');
+    catSection += `| [#${q.id}](https://leetcode.cn/problems/${q.slug}/) | [${q.title}](${rel}) | ${q.difficulty} | ${tryMark} | ${appr} |\n`;
   }
 }
 
@@ -45,12 +51,13 @@ const md = `# 🧗 我的 LeetCode 刷题之旅
 
 ${diffBadge('Total', total, '6366f1')} ${diffBadge('Easy', byDiff.Easy, '00af9b')} ${diffBadge('Medium', byDiff.Medium, 'ffb800')} ${diffBadge('Hard', byDiff.Hard, 'ef4743')} ${diffBadge('一次通过率', rate + '%25', '00af9b')}
 
-- **总完成**：${total} 题
-- **活跃做题日**：${dates.size} 天
+- **总完成**：${total} 题（含 ${legacyCount} 道早期手刷历史题）
+- **每日一题活跃日**：${dates.size} 天
 - **难度分布**：Easy ${byDiff.Easy} / Medium ${byDiff.Medium} / Hard ${byDiff.Hard}
-- **一次通过率**：${rate}%（${firstTry}/${total}）
+- **一次通过率**：${rate}%（${trackedFirstTry}/${tracked.length}，仅统计每日一题）
 
 > 📈 可视化大盘见 [dashboard.html](dashboard.html)（本地打开查看热力图）
+> 🏷 标记说明：✅ 一次通过 · 🔁 非一次通过 · — 历史题无记录
 
 ## 🗂 目录结构
 
