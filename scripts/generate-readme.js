@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const progress = JSON.parse(fs.readFileSync(path.join(ROOT, 'progress.json'), 'utf8'));
+const progress = JSON.parse(fs.readFileSync(path.join(ROOT, 'meta', 'progress.json'), 'utf8'));
 const done = progress.completed;
 
 const total = done.length;
@@ -64,11 +64,18 @@ ${diffBadge('Total', total, '6366f1')} ${diffBadge('Easy', byDiff.Easy, '00af9b'
 \`\`\`
 problems/<算法分类>/<题号>-<slug>.ts   # 代码（含注释头：思路/是否一次过/复杂度）
 solutions/<题号>.md                    # 详细题解
-pitfalls.md                            # 思路缺陷复盘记录
-progress.json                          # 结构化进度数据（单一数据源）
+kamacoder/                             # 卡码网题（不计入 LeetCode 统计）
+meta/                                  # 系统元数据（可一键复原）
+├── RESTORE.md                         #   ⭐ 复原说明书：换模型/工具也能续上
+├── progress.json                      #   单一数据源（队列+完成记录+规则）
+├── SKILL-leetcode-daily.md            #   完整 skill 文档（含 API 细节）
+└── pitfalls.md                        #   思路缺陷复盘记录
 dashboard.html                         # 做题大盘可视化
 scripts/                               # 生成脚本
 \`\`\`
+
+> 🔄 **想换 AI/工具继续做题？** 让新助手读 [meta/RESTORE.md](meta/RESTORE.md) 即可一键复原整套系统。
+
 
 ## 📚 题目清单（按算法分类）
 ${catSection}

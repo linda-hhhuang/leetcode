@@ -214,9 +214,12 @@ leetcode/
 
 ---
 
-## 6.5 Git 仓库同步（leetcode-journey）
+## 6.5 Git 仓库同步（必做，每次 AC 后）⭐
 
-把刷题数据同步到 git 仓库，按算法分类管理 + 大盘可视化。
+> **这是工作流的强制环节，不是可选项。** 每次用户做完一题 AC，都必须更新并推送 git 仓库。
+> 换模型/工具后，让新助手读 `meta/RESTORE.md` 即可完全复原本系统。
+
+本地工作副本：`/Users/lennonhuang/WorkBuddy/Claw/leetcode-journey/`。注意：`progress.json`、本文档、`pitfalls.md` 均已移入 `meta/` 目录。
 
 ### 仓库结构
 

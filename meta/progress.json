@@ -4,7 +4,11 @@
     "advance_condition": "AC（全部用例通过）才推下一道",
     "refill": "队列清空后自动拉 LeetCode 每日一题入队；如果当天题是 Easy，展示题目+直接给出代码答案，等用户说提交再提交，AC 后再往前找最近一道未做过的 Medium/Hard 每日一题补入队列",
     "interaction": "不主动给思路/答案，等用户自己思考，讨论式学习",
-    "workflow": "推题 → 用户思考 → 讨论 → 写代码 → 提交 → AC → 下一道"
+    "workflow": "推题 → 用户思考 → 讨论 → 写代码 → 提交 → AC → 更新并推送 git → 下一道",
+    "language": "typescript",
+    "post_ac": "AC 后必须：① 更新 meta/progress.json ② 写 solutions/<id>.md ③ node scripts/build.js ④ git commit & push 到 master",
+    "git_sync": "每次做完题都更新并推送仓库 https://github.com/linda-hhhuang/leetcode.git (master)；用 PAT 推送，不写入文件",
+    "restore": "换模型/工具时读 meta/RESTORE.md 一键复原"
   },
   "queue": [],
   "completed": [

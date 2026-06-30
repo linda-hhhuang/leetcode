@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const progress = JSON.parse(fs.readFileSync(path.join(ROOT, 'progress.json'), 'utf8'));
+const progress = JSON.parse(fs.readFileSync(path.join(ROOT, 'meta', 'progress.json'), 'utf8'));
 const done = progress.completed;
 
 // ---- 统计 ----
