@@ -120,13 +120,14 @@ curl -s "https://leetcode.cn/submissions/detail/<submission_id>/check/" \
 
 ## 6. Git 同步
 
-- 仓库：`https://github.com/linda-hhhuang/leetcode.git`，主分支 **master**
-- GitHub 不支持密码认证，用 Personal Access Token 临时拼到 URL 推送，**绝不写进任何文件**：
+- 仓库：`git@github.com:linda-hhhuang/leetcode.git`（SSH），主分支 **master**
+- **本地已配好 SSH key**（`~/.ssh/id_ed25519`，公钥已加到 GitHub），直接推送无需 token：
   ```bash
-  git push "https://<PAT>@github.com/linda-hhhuang/leetcode.git" master
+  git push origin master
   ```
-- 每次 AC 后：`git add -A && git commit -m "solve: #<id> <title>" && git push`
-- 提醒用户：token 用完去 https://github.com/settings/tokens 撤销
+- 每次 AC 后：`git add -A && git commit -m "solve: #<id> <title>" && git push origin master`
+- 备用（SSH 不可用时）：用 PAT 临时拼 URL 推送，**绝不写进文件**：
+  `git push "https://<PAT>@github.com/linda-hhhuang/leetcode.git" master`
 
 ## 7. progress.json 字段规范
 
@@ -162,10 +163,10 @@ curl -s "https://leetcode.cn/submissions/detail/<submission_id>/check/" \
 
 ## 8. 一键复原步骤（换模型/工具后）
 
-1. `git clone https://github.com/linda-hhhuang/leetcode.git`
+1. `git clone git@github.com:linda-hhhuang/leetcode.git`（或 https 地址）
 2. 读 `meta/RESTORE.md`（本文件）+ `meta/progress.json` + `meta/SKILL-leetcode-daily.md`
 3. 确认 `~/.workbuddy/mcp.json` 里有有效的 `LEETCODE_SESSION`（没有就让用户提供）
-4. 跟用户要一个 GitHub PAT（推送用）
+4. 确认推送通道：本地已配 SSH key（`ssh -T git@github.com` 能认证即可直接 push）；新机器无 key 时让用户配 SSH 或临时给 PAT
 5. 对用户说「每日一题」即可继续——你已经完全复原这套系统
 
 ---

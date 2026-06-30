@@ -251,13 +251,15 @@ AC 一题后：① 更新 progress.json（带 category/first_try/note）→ ② 
 
 ### 远程
 
-GitHub 仓库：`https://github.com/linda-hhhuang/leetcode.git`，主分支 **master**。
+GitHub 仓库：`git@github.com:linda-hhhuang/leetcode.git`（SSH），主分支 **master**。
 
-推送（GitHub 不支持密码认证，用 PAT 临时推送，不写入文件）：
+推送（本地已配 SSH key，直接推无需 token）：
 ```bash
-git push -f "https://<PAT>@github.com/linda-hhhuang/leetcode.git" master
+git push origin master
 ```
-日常 AC 后：更新 progress.json + solutions/*.md → `node scripts/build.js` → commit → push。
+备用（SSH 不可用时）用 PAT 临时推送，不写入文件：`git push "https://<PAT>@github.com/linda-hhhuang/leetcode.git" master`
+
+日常 AC 后：更新 meta/progress.json + solutions/*.md → `node scripts/build.js` → commit → push。
 
 历史题（legacy）：早期用 LeetCode VS Code 插件刷的题，progress.json 中标 `source:"legacy"`、日期/first_try 为 null，计入总数和分类但不进热力图/一次过率统计。卡码网题放 `kamacoder/`，不计入 LeetCode 统计。
 
