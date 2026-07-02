@@ -13,6 +13,24 @@
   "queue": [],
   "completed": [
     {
+      "id": 2812,
+      "slug": "find-the-safest-path-in-a-grid",
+      "title": "找出最安全路径",
+      "difficulty": "Medium",
+      "category": "bfs-dfs",
+      "enqueued": "2026-07-01",
+      "solved": "2026-07-02",
+      "first_try": false,
+      "approach": "多源 BFS 建距离矩阵 + 二分答案 + BFS 验证连通性",
+      "note": "第一步暴力算距离 O(n⁴) 超时，需多源 BFS O(n²)；第二步未识别出'最大化最小值=二分答案'模式（见 pitfalls #2）",
+      "complexity": "O(n² log n) 时间, O(n²) 空间",
+      "language": "typescript",
+      "runtime": "1089ms",
+      "memory": "93.9MB",
+      "submission_id": 733725154,
+      "solution_file": "solutions/2812.md"
+    },
+    {
       "id": 1358,
       "slug": "number-of-substrings-containing-all-three-characters",
       "title": "包含所有三种字符的子字符串数目",

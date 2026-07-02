@@ -4,12 +4,12 @@
 
 ## 📊 总览
 
-![Total](https://img.shields.io/badge/Total-24-6366f1) ![Easy](https://img.shields.io/badge/Easy-9-00af9b) ![Medium](https://img.shields.io/badge/Medium-12-ffb800) ![Hard](https://img.shields.io/badge/Hard-3-ef4743) ![一次通过率](https://img.shields.io/badge/一次通过率-73%25-00af9b)
+![Total](https://img.shields.io/badge/Total-25-6366f1) ![Easy](https://img.shields.io/badge/Easy-9-00af9b) ![Medium](https://img.shields.io/badge/Medium-13-ffb800) ![Hard](https://img.shields.io/badge/Hard-3-ef4743) ![一次通过率](https://img.shields.io/badge/一次通过率-67%25-00af9b)
 
-- **总完成**：24 题（含 13 道早期手刷历史题）
-- **每日一题活跃日**：10 天
-- **难度分布**：Easy 9 / Medium 12 / Hard 3
-- **一次通过率**：73%（8/11，仅统计每日一题）
+- **总完成**：25 题（含 13 道早期手刷历史题）
+- **每日一题活跃日**：11 天
+- **难度分布**：Easy 9 / Medium 13 / Hard 3
+- **一次通过率**：67%（8/12，仅统计每日一题）
 
 > 📈 可视化大盘见 [dashboard.html](dashboard.html)（本地打开查看热力图）
 > 🏷 标记说明：✅ 一次通过 · 🔁 非一次通过 · — 历史题无记录
@@ -62,6 +62,13 @@ scripts/                               # 生成脚本
 | [#3120](https://leetcode.cn/problems/count-the-number-of-special-characters-i/) | [统计特殊字母的数量 I](problems/hash-counting/3120-count-the-number-of-special-characters-i.ts) | Easy | ✅ | 双数组 low[26]/up[26] 标记出现，最后统计同时为 1 的位 |
 | [#3121](https://leetcode.cn/problems/count-the-number-of-special-characters-ii/) | [统计特殊字母的数量 II](problems/hash-counting/3121-count-the-number-of-special-characters-ii.ts) | Medium | 🔁 | 状态机：单数组 state[26]，4 态 (0/1/2/-1) 单遍扫描 |
 
+### bfs-dfs (2)
+
+| 题号 | 标题 | 难度 | 一次过 | 解法 |
+|---|---|---|:---:|---|
+| [#1306](https://leetcode.cn/problems/jump-game-iii/) | [跳跃游戏 III](problems/bfs-dfs/1306-jump-game-iii.ts) | Medium | ✅ | 正向 BFS + 原地标记 visited（arr[i]=-1） |
+| [#2812](https://leetcode.cn/problems/find-the-safest-path-in-a-grid/) | [找出最安全路径](problems/bfs-dfs/2812-find-the-safest-path-in-a-grid.ts) | Medium | 🔁 | 多源 BFS 建距离矩阵 + 二分答案 + BFS 验证连通性 |
+
 ### sliding-window (2)
 
 | 题号 | 标题 | 难度 | 一次过 | 解法 |
@@ -89,12 +96,6 @@ scripts/                               # 生成脚本
 |---|---|---|:---:|---|
 | [#27](https://leetcode.cn/problems/remove-element/) | [移除元素](problems/array-two-pointers/27-remove-element.ts) | Easy | — | 快慢指针原地移除 |
 | [#977](https://leetcode.cn/problems/squares-of-a-sorted-array/) | [有序数组的平方](problems/array-two-pointers/977-squares-of-a-sorted-array.ts) | Easy | — | 双指针从外往里填充 |
-
-### bfs-dfs (1)
-
-| 题号 | 标题 | 难度 | 一次过 | 解法 |
-|---|---|---|:---:|---|
-| [#1306](https://leetcode.cn/problems/jump-game-iii/) | [跳跃游戏 III](problems/bfs-dfs/1306-jump-game-iii.ts) | Medium | ✅ | 正向 BFS + 原地标记 visited（arr[i]=-1） |
 
 ### greedy (1)
 
