@@ -13,6 +13,24 @@
   "queue": [],
   "completed": [
     {
+      "id": 3620,
+      "slug": "network-recovery-pathways",
+      "title": "网络恢复路径",
+      "difficulty": "Hard",
+      "category": "bfs-dfs",
+      "enqueued": "2026-07-03",
+      "solved": "2026-07-14",
+      "first_try": false,
+      "approach": "二分答案 + DAG 拓扑排序最短路：二分 score 下限 mid，过滤 cost<mid 的边，拓扑排序+松弛求最短路判 ≤k",
+      "note": "初始想暴力枚举路径（指数级），需要认出两个模式：1.多约束下'最大化最小值'=二分答案 2.DAG最短路=拓扑排序+松弛 O(n+m)。也复习了拓扑排序和松弛概念",
+      "complexity": "O((n+m) log m) 时间, O(n+m) 空间",
+      "language": "typescript",
+      "runtime": "1482ms",
+      "memory": "127.7MB",
+      "submission_id": 735815499,
+      "solution_file": "solutions/3620.md"
+    },
+    {
       "id": 2812,
       "slug": "find-the-safest-path-in-a-grid",
       "title": "找出最安全路径",

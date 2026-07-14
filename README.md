@@ -4,12 +4,12 @@
 
 ## 📊 总览
 
-![Total](https://img.shields.io/badge/Total-25-6366f1) ![Easy](https://img.shields.io/badge/Easy-9-00af9b) ![Medium](https://img.shields.io/badge/Medium-13-ffb800) ![Hard](https://img.shields.io/badge/Hard-3-ef4743) ![一次通过率](https://img.shields.io/badge/一次通过率-67%25-00af9b)
+![Total](https://img.shields.io/badge/Total-26-6366f1) ![Easy](https://img.shields.io/badge/Easy-9-00af9b) ![Medium](https://img.shields.io/badge/Medium-13-ffb800) ![Hard](https://img.shields.io/badge/Hard-4-ef4743) ![一次通过率](https://img.shields.io/badge/一次通过率-62%25-00af9b)
 
-- **总完成**：25 题（含 13 道早期手刷历史题）
-- **每日一题活跃日**：11 天
-- **难度分布**：Easy 9 / Medium 13 / Hard 3
-- **一次通过率**：67%（8/12，仅统计每日一题）
+- **总完成**：26 题（含 13 道早期手刷历史题）
+- **每日一题活跃日**：12 天
+- **难度分布**：Easy 9 / Medium 13 / Hard 4
+- **一次通过率**：62%（8/13，仅统计每日一题）
 
 > 📈 可视化大盘见 [dashboard.html](dashboard.html)（本地打开查看热力图）
 > 🏷 标记说明：✅ 一次通过 · 🔁 非一次通过 · — 历史题无记录
@@ -46,6 +46,14 @@ scripts/                               # 生成脚本
 | [#206](https://leetcode.cn/problems/reverse-linked-list/) | [反转链表](problems/linked-list/206-reverse-linked-list.ts) | Easy | — | 迭代三指针就地反转 |
 | [#707](https://leetcode.cn/problems/design-linked-list/) | [设计链表](problems/linked-list/707-design-linked-list.ts) | Medium | — | 维护头尾指针 + 长度的单链表类 |
 
+### bfs-dfs (3)
+
+| 题号 | 标题 | 难度 | 一次过 | 解法 |
+|---|---|---|:---:|---|
+| [#1306](https://leetcode.cn/problems/jump-game-iii/) | [跳跃游戏 III](problems/bfs-dfs/1306-jump-game-iii.ts) | Medium | ✅ | 正向 BFS + 原地标记 visited（arr[i]=-1） |
+| [#2812](https://leetcode.cn/problems/find-the-safest-path-in-a-grid/) | [找出最安全路径](problems/bfs-dfs/2812-find-the-safest-path-in-a-grid.ts) | Medium | 🔁 | 多源 BFS 建距离矩阵 + 二分答案 + BFS 验证连通性 |
+| [#3620](https://leetcode.cn/problems/network-recovery-pathways/) | [网络恢复路径](problems/bfs-dfs/3620-network-recovery-pathways.ts) | Hard | 🔁 | 二分答案 + DAG 拓扑排序最短路：二分 score 下限 mid，过滤 co… |
+
 ### simulation (3)
 
 | 题号 | 标题 | 难度 | 一次过 | 解法 |
@@ -61,13 +69,6 @@ scripts/                               # 生成脚本
 | [#242](https://leetcode.cn/problems/valid-anagram/) | [有效的字母异位词](problems/hash-counting/242-valid-anagram.ts) | Easy | — | Map 计数法：一遍累加一遍递减，最后判断是否全为 0 |
 | [#3120](https://leetcode.cn/problems/count-the-number-of-special-characters-i/) | [统计特殊字母的数量 I](problems/hash-counting/3120-count-the-number-of-special-characters-i.ts) | Easy | ✅ | 双数组 low[26]/up[26] 标记出现，最后统计同时为 1 的位 |
 | [#3121](https://leetcode.cn/problems/count-the-number-of-special-characters-ii/) | [统计特殊字母的数量 II](problems/hash-counting/3121-count-the-number-of-special-characters-ii.ts) | Medium | 🔁 | 状态机：单数组 state[26]，4 态 (0/1/2/-1) 单遍扫描 |
-
-### bfs-dfs (2)
-
-| 题号 | 标题 | 难度 | 一次过 | 解法 |
-|---|---|---|:---:|---|
-| [#1306](https://leetcode.cn/problems/jump-game-iii/) | [跳跃游戏 III](problems/bfs-dfs/1306-jump-game-iii.ts) | Medium | ✅ | 正向 BFS + 原地标记 visited（arr[i]=-1） |
-| [#2812](https://leetcode.cn/problems/find-the-safest-path-in-a-grid/) | [找出最安全路径](problems/bfs-dfs/2812-find-the-safest-path-in-a-grid.ts) | Medium | 🔁 | 多源 BFS 建距离矩阵 + 二分答案 + BFS 验证连通性 |
 
 ### sliding-window (2)
 
